@@ -1,6 +1,6 @@
 
 export default function OrderSidebar() {
   return (
-    <div>OrderSidebar</div>
+    <aside className="w-72 p-4">OrderSidebar</aside>
   )
 }

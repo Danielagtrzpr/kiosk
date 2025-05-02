@@ -1,4 +1,5 @@
 import OrderSidebar from "@/components/OrderSidebar";
+import OrderSummary from "@/components/OrderSummary";
 
 export default function RootLayout({
     children,
@@ -6,9 +7,12 @@ export default function RootLayout({
     children: React.ReactNode;
   }>) {
     return (
-      <div className="md:flex">
+      <div className="flex h-screen bg-gray-900 gap-2">
         <OrderSidebar/>
-        {children}
+        <main className="flex-1 bg-background p-4">
+            {children}
+        </main>
+        <OrderSummary/>
       </div>
     );
   }
