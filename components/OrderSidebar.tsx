@@ -1,4 +1,5 @@
 import { prisma } from "@/src/lib/prisma"
+import CategoryIcon from "./CategoryIcon"
 
 //Fetching data in Nextjs is posible un 4 ways one of them is using Prisma Client(ORM) directly just in server components
 // otherwise in client components you can use axios or React Query
@@ -19,7 +20,11 @@ export default async function OrderSidebar() {
   console.log(categories)
   return (
     <aside className="w-72 p-4">
-
+      <nav className="mt-10"> 
+        {categories.map((category) => (
+          <CategoryIcon key={category.id} category={category}/>
+        ))}
+      </nav>
     </aside>
   )
 }
