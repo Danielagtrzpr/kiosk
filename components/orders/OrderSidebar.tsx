@@ -1,5 +1,5 @@
 import { prisma } from "@/src/lib/prisma"
-import CategoryIcon from "./CategoryIcon"
+import CategoryIcon from "../ui/CategoryIcon"
 
 //Fetching data in Nextjs is posible un 4 ways one of them is using Prisma Client(ORM) directly just in server components
 // otherwise in client components you can use axios or React Query
