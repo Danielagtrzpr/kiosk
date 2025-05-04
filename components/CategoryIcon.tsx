@@ -1,4 +1,5 @@
 import { Category } from "@prisma/client"
+import Image from "next/image"
 
 type CategoryIconProps = {
   category: Category// This is the type of the category object returned by Prisma Prima generates types for my models
@@ -6,6 +7,11 @@ type CategoryIconProps = {
 
 export default function CategoryIcon( { category }: CategoryIconProps) {
   return (
-    <div>{category.name}</div>
+    <div className="flex w-full h-12 items-center p-2 gap-4">
+        <div className="relative w-10 h-10">
+            <Image fill src={`/icon_${category.slug}.svg`} alt="Image Category"/>
+        </div>
+        <p className="font-bold">{category.name}</p>
+    </div>
   )
 }
