@@ -1,6 +1,7 @@
 import { categories } from "./data/categories";
 import { products } from "./data/products";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '../app/generated/prisma';
+
 
 const prisma = new PrismaClient();
 async function main() { 
@@ -26,3 +27,5 @@ main()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+

@@ -161,11 +161,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://root:OitfdwNIxYYRaxNuLtqfTsfVWZ6DOvFy@dpg-d0akf96r433s73f13egg-a.oregon-postgres.render.com/kiosk_jnte"
+        "value": null
       }
     }
   },
