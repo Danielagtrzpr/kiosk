@@ -7,9 +7,19 @@ interface Store {
     addToOrder: (product: Product) => void,
 }
 
-export const useStore = create<Store>(() => ({
+export const useStore = create<Store>((set) => ({
     order: [],
     addToOrder: (product)=>{
-        console.log(product)
+        // Remove the image and categoryId from the product
+        const {categoryId, image,...data} = product;
+
+        // cast the product to OrderItem and adding the quantity and subtotal
+        set((state) => ({
+            order: [...state.order, {
+                ...data, 
+                quantity: 1,
+                subtotal: 1*product.price,
+            }
+        ]}))     
     }
 }));
