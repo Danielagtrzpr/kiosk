@@ -9,7 +9,7 @@ export default function RootLayout({
     return (
       <div className="flex h-screen bg-gray-900 gap-2">
         <OrderSidebar/>
-        <main className="flex-1 bg-background p-4">
+        <main className="flex-1 bg-background p-4 h-screen overflow-auto scrollbar-hide">
             {children}
         </main>
         <OrderSummary/>

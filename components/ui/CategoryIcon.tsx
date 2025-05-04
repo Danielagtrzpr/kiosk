@@ -8,7 +8,7 @@ type CategoryIconProps = {
 
 export default function CategoryIcon( { category }: CategoryIconProps) {
   return (
-    <div className="flex w-full h-12 items-center p-2 gap-4">
+    <div className="flex w-full h-12 items-center p-2 gap-4 text-xl">
         <div className="relative w-10 h-10">
             <Image fill src={`/icon_${category.slug}.svg`} alt="Image Category"/>
         </div>

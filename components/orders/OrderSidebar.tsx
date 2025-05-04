@@ -18,7 +18,7 @@ async function getCategories() {
 export default async function OrderSidebar() {
   const categories = await getCategories()
   return (
-    <aside className="w-72 p-4">
+    <aside className="w-3xs p-4">
       <nav className="mt-10"> 
         {categories.map((category) => (
           <CategoryIcon key={category.id} category={category}/>
