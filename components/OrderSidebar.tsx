@@ -17,7 +17,6 @@ async function getCategories() {
 //in Nextjs in server components they can be async
 export default async function OrderSidebar() {
   const categories = await getCategories()
-  console.log(categories)
   return (
     <aside className="w-72 p-4">
       <nav className="mt-10"> 
