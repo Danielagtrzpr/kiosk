@@ -6,6 +6,8 @@ import { it } from 'node:test';
 interface Store {
     order: OrderItem[],
     addToOrder: (product: Product) => void,
+    incrementQuantity: (id: Product["id"]) => void,
+    decrementQuantity: (id: Product["id"]) => void,
 }
 
 export const useStore = create<Store>((set,get) => ({
@@ -36,6 +38,34 @@ export const useStore = create<Store>((set,get) => ({
         }
         
         // cast the product to OrderItem and adding the quantity and subtotal
-        set(() => ({order: orderItems}))     
+        set(() => ({order: orderItems}))  
+    },
+    incrementQuantity: (id) => {
+        const orderItems = get().order.map((item) => {
+            if(item.id === id){
+                return {...item,
+                    quantity: item.quantity + 1, 
+                    subtotal: (item.quantity + 1) * item.price
+                }
+            }
+            else {
+                return item
+            }
+        })
+        set(() => ({order: orderItems}))
+    },
+    decrementQuantity: (id) => {
+        const orderItems = get().order.map((item) => {
+            if(item.id === id){
+                return {...item,
+                    quantity: item.quantity - 1, 
+                    subtotal: (item.quantity - 1) * item.price
+                }
+            }
+            else {
+                return item
+            }
+        }).filter((item) => item.quantity > 0)
+        set(() => ({order: orderItems}))
     }
 }));
