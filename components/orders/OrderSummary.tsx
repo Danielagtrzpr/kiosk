@@ -4,14 +4,24 @@ import ProductDetails from "./ProductDetails";
 import { useMemo } from "react";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/create-order-action";
+import { OrderSchema } from "@/src/schema";
 
 export default function OrderSummary() {
   const { order } = useStore();
   const total = useMemo(()=> order.reduce((total,item)=>total+(item.price*item.quantity),0),[order])
 
   function handleCreate(formData:FormData){
-    console.log(formData.get("name"))// this Next function replace the necesary state for the inputs
-   
+    //creating this object for the future, so I can put here more fields that requires validation
+    const data = {
+      name: formData.get("name")
+    }
+
+    //validating the input of the user in the client
+    const result = OrderSchema.safeParse(data)
+    console.log(result)//shoul receive a {succes:false, errors..}
+
+    //this is just yo avoid the createOrder() ejecution
+    return
     createOrder()
   }
 
