@@ -9,10 +9,9 @@ export default function OrderSummary() {
   const { order } = useStore();
   const total = useMemo(()=> order.reduce((total,item)=>total+(item.price*item.quantity),0),[order])
 
-  function handleCreate(){
-    console.log("first action implementation")//this works well but
-    //with actions the thing is that "If I want to save this form info into db" this component should be a server component
-    //to achieve that I need to create a new component "use server" like this
+  function handleCreate(formData:FormData){
+    console.log(formData.get("name"))// this Next function replace the necesary state for the inputs
+   
     createOrder()
   }
 
@@ -35,6 +34,12 @@ export default function OrderSummary() {
           <span className="font-black text-2xl">{formatCurrency(total)}</span>
         </p>
         <form  className="w-full mt-10 space-y-5" action={handleCreate}>
+          <input
+            type="text"
+            placeholder="Tu Nombre"
+            className="bg-gray-800 p-2 w-full"
+            name="name"
+          />
           <input type="submit" value="Confirar Pedido" className="py-2 rounded uppercase text-white bg-indigo-700 w-full text-center cursor-pointer font-bold" />
         </form>
     </aside>
