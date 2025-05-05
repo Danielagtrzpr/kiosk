@@ -8,14 +8,14 @@ type ProductDetailsProps = {
   item: OrderItem
 }
 function ProductDetails({item}: ProductDetailsProps) {
-    const { incrementQuantity, decrementQuantity } = useStore((state) => state);
+    const { incrementQuantity, decrementQuantity, removeOrderItem } = useStore((state) => state);
   return (
     <div className="shadow space-y-1 p-4 bg-gray-900">
       <div className="space-y-4">
         <div className="flex justify-between items-start">
           <p className="text-xl font-bold">{item.name} </p>
 
-          <button type="button" onClick={() => {}}>
+          <button type="button" onClick={() => removeOrderItem(item.id)}>
             <XCircleIcon className="text-red-600 h-8 w-8" />
           </button>
         </div>
