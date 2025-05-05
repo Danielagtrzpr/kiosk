@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/src/schema";
+import { toast } from "react-toastify";
 
 export default function OrderSummary() {
   const { order } = useStore();
@@ -19,7 +20,11 @@ export default function OrderSummary() {
     //validating the input of the user in the client
     const result = OrderSchema.safeParse(data)
     console.log(result)//shoul receive a {succes:false, errors..}
-
+    if(!result.success){
+      result.error.issues.forEach((issue)=>{
+        toast.error(issue.message)
+      })
+    }
     //this is just yo avoid the createOrder() ejecution
     return
     createOrder()
