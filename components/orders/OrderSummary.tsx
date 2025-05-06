@@ -14,7 +14,9 @@ export default function OrderSummary() {
   async function handleCreate(formData:FormData){
     //creating this object for the future, so I can put here more fields that requires validation
     const data = {
-      name: formData.get("name")
+      name: formData.get("name"),
+      total,
+      order
     }
 
     //validating the input of the user in the client
