@@ -11,7 +11,6 @@ type CategoryIconProps = {
 
 export default function CategoryIcon( { category }: CategoryIconProps) {
   const params = useParams<{category:string}>()// This hook is used to get the current URL parameters
-  console.log(params)
   return (
     <div className={`${params.category===category.slug?"bg-amber-500":""} flex w-full h-12 items-center p-2 gap-4 text-xl`}>
         <div className="relative w-10 h-10">

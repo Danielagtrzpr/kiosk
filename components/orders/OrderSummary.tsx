@@ -21,7 +21,6 @@ export default function OrderSummary() {
 
     //validating the input of the user in the client
     const result = OrderSchema.safeParse(data)
-    console.log(result)//shoul receive a {succes:false, errors..}
     if(!result.success){
       result.error.issues.forEach((issue)=>{
         toast.error(issue.message)
@@ -42,12 +41,12 @@ export default function OrderSummary() {
   }
 
   return (
-    <aside className="w-2xs h-screen bg-background p-4 overflow-auto scrollbar-hide">
+    <aside className="flex flex-col w-2xs h-screen bg-gray-900 p-4">
         <h2 className="font-black text-4xl">Mi Pedido</h2>
         {order.length === 0 ? (
           <p className="mt-5 text-center">No hay productos en el pedido</p>
         ) : (
-          <div className="flex flex-col gap-4 mt-5">
+          <div className="flex flex-col gap-4 mt-5 h-full overflow-auto scrollbar-hide">
             {order.map((product) => (
               <ProductDetails
                 key={product.id}

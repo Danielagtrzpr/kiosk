@@ -14,12 +14,12 @@ async function getProducts(category: string) {
 
 
 export default async function OrderPage({params}: {params: {category: string}}) {
-  const products = await getProducts(params.category)
-  console.log(products)
+  const paramsAwaited = await params
+  const products = await getProducts(paramsAwaited.category)
   return (
     <>
       <h2 className="text-2xl py-4">Elige y personaliza tu pedido continuacion:</h2>
-      <div className="grid h-screen grid-cols-1 items-stretch md:grid-cols-3 gap-4">
+      <div className="grid h-screen grid-cols-1 items-stretch md:grid-cols-3 gap-4 ">
         {products.map((product) => (
           <ProductCard
             key={product.id}

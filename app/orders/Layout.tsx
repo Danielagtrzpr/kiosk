@@ -8,9 +8,9 @@ export default function RootLayout({
     children: React.ReactNode;
   }>) {
     return (
-      <div className="flex h-screen bg-gray-900 gap-2">
+      <div className="flex h-screen bg-gray-900">
         <OrderSidebar/>
-        <main className="flex-1 bg-background p-4 h-screen overflow-auto scrollbar-hide">
+        <main className="flex-1 bg-gray-950 p-4 h-screen overflow-auto scrollbar-hide">
             {children}
         </main>
         <OrderSummary/>

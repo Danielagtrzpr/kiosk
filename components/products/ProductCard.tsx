@@ -9,7 +9,7 @@ type ProductCardProps = {
 
 export default function ProductCard({product}: ProductCardProps) {
   return (
-    <div className="flex flex-col items-center bg-gray-900 rounded-md">
+    <div className="flex flex-col items-center bg-gray-900 rounded-2xl">
       <div className="relative w-full h-auto aspect-[3/4]">
         <Image
           fill
