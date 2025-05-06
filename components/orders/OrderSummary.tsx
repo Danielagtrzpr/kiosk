@@ -11,7 +11,7 @@ export default function OrderSummary() {
   const { order } = useStore();
   const total = useMemo(()=> order.reduce((total,item)=>total+(item.price*item.quantity),0),[order])
 
-  function handleCreate(formData:FormData){
+  async function handleCreate(formData:FormData){
     //creating this object for the future, so I can put here more fields that requires validation
     const data = {
       name: formData.get("name")
@@ -25,9 +25,14 @@ export default function OrderSummary() {
         toast.error(issue.message)
       })
     }
-    //this is just yo avoid the createOrder() ejecution
-    return
-    createOrder()
+
+    //validating in the server and showing toat if it fails
+    const response = await createOrder(data)
+    if(response?.errors){
+        response.errors.forEach((issue)=>{
+        toast.error(issue.message)
+     })
+    }
   }
 
   return (
