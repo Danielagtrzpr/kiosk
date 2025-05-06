@@ -8,7 +8,7 @@ import { OrderSchema } from "@/src/schema";
 import { toast } from "react-toastify";
 
 export default function OrderSummary() {
-  const { order } = useStore();
+  const { order,clearOrder } = useStore();
   const total = useMemo(()=> order.reduce((total,item)=>total+(item.price*item.quantity),0),[order])
 
   async function handleCreate(formData:FormData){
@@ -35,6 +35,10 @@ export default function OrderSummary() {
         toast.error(issue.message)
      })
     }
+
+    //it just reaches here if it pass all the validations
+    toast.success("Pedido realizado correctamente")
+    clearOrder()
   }
 
   return (
